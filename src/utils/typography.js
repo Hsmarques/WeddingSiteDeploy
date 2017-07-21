@@ -5,6 +5,7 @@ import CodePlugin from 'typography-plugin-code'
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
 
 const options = {
+  headerFontFamily: [`Space Mono`, `sans-serif`],
   baseFontSize: '18px',
   baseLineHeight: 1.45,
   scaleRatio: 2.25,

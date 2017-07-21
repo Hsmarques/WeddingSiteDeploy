@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
-import { rhythm } from '../utils/typography'
+import { rhythm, scale } from '../utils/typography'
+import FaGlass from 'react-icons/lib/fa/glass'
 
 export default class Template extends React.Component {
   static propTypes = {
@@ -21,7 +22,7 @@ export default class Template extends React.Component {
         />
         <div
           style={{
-            background: `white`,
+            background: `black`,
             marginBottom: rhythm(1),
           }}>
           <div
@@ -36,19 +37,35 @@ export default class Template extends React.Component {
               style={{
                 margin: 0,
                 padding: `${rhythm(3 / 4)}`,
-                position: 'absolute',
+                // position: 'absolute',
               }}>
-              <Link
-                to="/"
-                style={{
-                  color: 'white',
-                  textDecoration: 'none',
-                  textShadow: '0 1px 5px #000000',
+              <h1
+                css={{
+                  ...scale(4 / 5),
+                  lineHeight: 1,
+                  margin: 0,
+                  overflow: `hidden`,
                 }}>
-                Mariana e Hugo
-              </Link>
+                <Link
+                  to="/"
+                  style={{
+                    color: 'white',
+                    textDecoration: 'none',
+                    textShadow: '0 1px 5px grey',
+                  }}>
+                  <FaGlass style={{ color: 'white' }} />
+                  <span
+                    css={{
+                      paddingLeft: `calc(${rhythm(1)} - 1px)`,
+                      borderLeft: `1px solid rgba(0,0,0,0.3)`,
+                      lineHeight: 1,
+                      marginLeft: rhythm(1),
+                    }}>
+                    Mariana e Hugo
+                  </span>
+                </Link>
+              </h1>
             </h1>
-            <img src={require('../data/background-image-crop2.jpg')} />
           </div>
         </div>
         <div
