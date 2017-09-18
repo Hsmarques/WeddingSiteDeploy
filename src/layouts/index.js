@@ -4,7 +4,6 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import CameraIcon from 'react-icons/lib/fa/camera-retro'
 import { rhythm, scale } from '../utils/typography'
-import Modail from '../components/modal'
 
 export default class Template extends React.Component {
   static propTypes = {
