@@ -4,80 +4,117 @@ import { navigateTo } from 'gatsby-link'
 import Link from 'gatsby-link'
 
 import { rhythm, scale } from '../utils/typography'
+import MapContainer from './modal'
 
 let touched = false
+
+const normalCard = (info: {
+  id: number,
+  title: string,
+  location: string,
+  link: string,
+  address: string,
+  time?: string,
+}) =>
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'flex-start',
+      flexDirection: 'column',
+    }}
+  >
+    <a href={`${info.link}`} style={{ textDecoration: 'none', color: 'black' }}>
+      <h3 style={{ color: 'grey' }}>
+        {info.location}
+      </h3>
+      <p style={{ color: 'grey' }}>
+        {info.address}
+      </p>
+    </a>
+    {!!info.time &&
+      <p style={{ color: 'grey', paddingTop: '10px' }}>
+        Hora: {info.time}
+      </p>}
+  </div>
+
+const contactCard = (info: {
+  id: number,
+  title: string,
+  her: number,
+  his: number,
+}) =>
+  <div>
+    <p style={{ color: 'grey' }}>
+      Mariana: {info.her}
+    </p>
+    <p style={{ color: 'grey' }}>
+      Hugo: {info.his}
+    </p>
+  </div>
 
 export default class Item extends React.Component {
   constructor() {
     super()
     this.state = {
       hovering: false,
+      width: '0',
+      height: '0',
     }
   }
+
+  componentDidMount() {
+    this.windowWidth = window.innerWidth
+    this.updateWindowDimensions()
+    window.addEventListener('resize', this.updateWindowDimensions)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions)
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight })
+  }
+
   render() {
+    const info = this.props.info
     return (
-      <div
-        // style={{
-        //   display: `block`,
-        //   backgroundColor: `lightgray`,
-        //   flex: `1 0 0%`,
-        //   marginRight: rhythm(1 / 8),
-        //   width: `100%`,
-        //   maxWidth: 290.1,
-        //   position: `relative`,
-        //   // [presets.Tablet]: {
-        //   //   marginRight: rhythm(1),
-        //   // },
-        //   ':last-child': {
-        //     marginRight: 0,
-        //   },
-        // }}
-        // to={`/${this.props.image}`}
-        onTouchStart={() => console.log('touched me')}
-        onMouseEnter={() => {
-          if (!touched) {
-            this.setState({ hovering: true })
-          }
-        }}
-        onMouseLeave={() => {
-          if (!touched) {
-            this.setState({ hovering: false })
-          }
-        }}>
+      <div>
+        <h1>
+          {info.title}
+        </h1>
         <div
-          // onMouseEnter={() => }
           style={{
-            flexDirection: `column`,
-            flexShrink: 0,
+            display: 'flex',
+            flexDirection: this.state.width > 750 ? `row` : `column`,
             position: `relative`,
-            // paddingBottom: `100%`,
             overflow: `hidden`,
-          }}>
+          }}
+        >
           <img
             onTouchStart={() => console.log('I just pressed you')}
             style={{
-              boxShadow: '0 0 5px #999999',
-              // overflow: `hidden`,
+              overflow: `hidden`,
+              width: '100%',
+              height: '40%',
             }}
             src={require(`../data/${this.props.image}.jpg`)}
           />
-          {this.state.hovering &&
-            <div
-              style={{
-                position: `absolute`,
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                backgroundColor: `rgba(0,0,0,0.3)`,
-                display: `flex`,
-                justifyContent: `center`,
-                alignItems: `center`,
-                color: `white`,
-                // ...scale(2 / 5),
-              }}>
-              hello
-            </div>}
+          <div
+            style={{
+              flexDirection: 'column',
+              color: 'black',
+              justifyContent: `flex-start`,
+              alignItems: 'center',
+              fontSize: 20,
+              padding: 10,
+              width: '100%',
+            }}
+          >
+            {info.id === 0 && normalCard(info)}
+            {info.id === 1 && normalCard(info)}
+            {info.id === 2 && contactCard(info)}
+          </div>
         </div>
       </div>
     )
