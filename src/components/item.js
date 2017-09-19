@@ -22,7 +22,7 @@ const normalCard = (info: {
       flexDirection: 'column',
     }}
   >
-    <a href={`${info.link}`} style={{ textDecoration: 'none', color: 'black' }}>
+    <a href={`${info.link}`} style={{ color: 'grey' }}>
       <h3 style={{ color: 'grey' }}>
         {info.location}
       </h3>

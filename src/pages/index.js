@@ -46,11 +46,17 @@ export default class Index extends React.Component {
           modalText={`Cerimónia`}
           image={'capela-sao-miguel'}
         />
+        <div
+          style={{ borderBottom: '1px solid lightgrey', marginBottom: '15px' }}
+        />
         <Item
           info={info[1]}
           page={`igreja`}
           modalText={`Quinta`}
-          image={'quinta-da-couceira'}
+          image={'quinta'}
+        />
+        <div
+          style={{ borderBottom: '1px solid lightgrey', marginBottom: '15px' }}
         />
         <Item
           info={info[2]}

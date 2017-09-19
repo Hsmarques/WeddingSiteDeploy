@@ -51,42 +51,37 @@ export default class Template extends React.Component {
               style={{
                 margin: 0,
                 padding: `${rhythm(3 / 4)}`,
+                ...scale(4 / 5),
+                lineHeight: 1,
+                margin: 0,
+                overflow: `hidden`,
               }}
             >
-              <h1
+              <Link
+                to="/"
                 style={{
-                  ...scale(4 / 5),
-                  lineHeight: 1,
-                  margin: 0,
-                  overflow: `hidden`,
+                  color: 'white',
+                  textDecoration: 'none',
                 }}
               >
-                <Link
-                  to="/"
+                <CameraIcon
                   style={{
-                    color: 'white',
-                    textDecoration: 'none',
+                    top: -4,
+                    display: `inline-block`,
+                    position: `relative`,
+                  }}
+                />
+                <span
+                  style={{
+                    paddingLeft: `calc(${rhythm(1 / 2)} - 1px)`,
+                    borderLeft: `1px solid white`,
+                    lineHeight: 1,
+                    marginLeft: rhythm(1 / 2),
                   }}
                 >
-                  <CameraIcon
-                    style={{
-                      top: -4,
-                      display: `inline-block`,
-                      position: `relative`,
-                    }}
-                  />
-                  <span
-                    style={{
-                      paddingLeft: `calc(${rhythm(1 / 2)} - 1px)`,
-                      borderLeft: `1px solid white`,
-                      lineHeight: 1,
-                      marginLeft: rhythm(1 / 2),
-                    }}
-                  >
-                    Mariana e Hugo
-                  </span>
-                </Link>
-              </h1>
+                  Mariana e Hugo
+                </span>
+              </Link>
             </h1>
           </div>
         </div>
