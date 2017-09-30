@@ -79,9 +79,21 @@ export default class Item extends React.Component {
     const info = this.props.info
     return (
       <div>
-        <h1>
-          {info.title}
-        </h1>
+        {!!this.props.page
+          ? <Link
+              to={`${this.props.page}`}
+              style={{ color: 'black' }}
+              activeStyle={{
+                color: 'red',
+              }}
+            >
+              <h1>
+                {info.title}
+              </h1>
+            </Link>
+          : <h1>
+              {info.title}
+            </h1>}
         <div
           style={{
             display: 'flex',

@@ -51,7 +51,7 @@ export default class Index extends React.Component {
         />
         <Item
           info={info[1]}
-          page={`igreja`}
+          page={`quinta`}
           modalText={`Quinta`}
           image={'quinta'}
         />
@@ -60,7 +60,7 @@ export default class Index extends React.Component {
         />
         <Item
           info={info[2]}
-          page={`igreja`}
+          page={false}
           modalText={`Contactos`}
           image={'ele-e-ela'}
         />
