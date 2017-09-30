@@ -11,12 +11,17 @@ export default class Index extends React.Component {
         </Link>
         <h2>Quinta da Couceira</h2>
         <img src={require(`../data/quinta.jpg`)} />
-        <blockquote style={{ borderLeft: '5px solid #eaecef' }}>
+        <blockquote style={{ borderLeft: '5px solid #eaecef', color: 'grey' }}>
           <p style={{ marginLeft: '10px', fontSize: '15px' }}>
             A beleza natural da paisagem e um património cultural rico em
             história são a essência da Quinta da Couceira. O ar puro, os aromas
             em cada estação, a tranquilidade, o contacto com a natureza e a vida
             simples do campo convidam à realização de um evento de sonho.
+          </p>
+          <p style={{ marginLeft: '10px' }}>
+            <a style={{ color: 'grey' }} href={`www.quintadacouceira.com`}>
+              www.quintadacouceira.com
+            </a>
           </p>
         </blockquote>
         <h4>Localização</h4>
