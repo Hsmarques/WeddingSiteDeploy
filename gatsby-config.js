@@ -2,5 +2,5 @@ module.exports = {
   siteMetadata: {
     title: `Mariana e Hugo wedding`,
   },
-  plugins: [`gatsby-plugin-react-helmet`],
+  plugins: [`gatsby-plugin-react-helmet`, `gatsby-plugin-netlify`],
 }
