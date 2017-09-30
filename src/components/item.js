@@ -55,14 +55,12 @@ export default class Item extends React.Component {
   constructor() {
     super()
     this.state = {
-      hovering: false,
-      width: '0',
+      width: window.innerWidth,
       height: '0',
     }
   }
 
   componentDidMount() {
-    this.windowWidth = window.innerWidth
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
   }
@@ -77,7 +75,6 @@ export default class Item extends React.Component {
 
   render() {
     const info = this.props.info
-    const image = require(`../data/${this.props.image}.jpg`)
     return (
       <div>
         {!!this.props.page
@@ -110,7 +107,7 @@ export default class Item extends React.Component {
               width: '100%',
               height: '40%',
             }}
-            src={image}
+            src={require(`../data/${this.props.image}.jpg`)}
           />
           <div
             style={{
