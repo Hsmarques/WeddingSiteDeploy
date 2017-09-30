@@ -56,7 +56,7 @@ export default class Item extends React.Component {
     super()
     this.state = {
       hovering: false,
-      width: '750',
+      width: '0',
       height: '0',
     }
   }
@@ -77,6 +77,7 @@ export default class Item extends React.Component {
 
   render() {
     const info = this.props.info
+    const image = require(`../data/${this.props.image}.jpg`)
     return (
       <div>
         {!!this.props.page
@@ -108,9 +109,8 @@ export default class Item extends React.Component {
               overflow: `hidden`,
               width: '100%',
               height: '40%',
-              borderRadius: '1%',
             }}
-            src={require(`../data/${this.props.image}.jpg`)}
+            src={image}
           />
           <div
             style={{
