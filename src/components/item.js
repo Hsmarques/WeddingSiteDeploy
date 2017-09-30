@@ -55,8 +55,8 @@ export default class Item extends React.Component {
   constructor() {
     super()
     this.state = {
-      width: typeof window === undefined ? window.innerWidth : 0,
-      height: typeof window === undefined ? window.innerHeight : 0,
+      width: typeof window !== 'undefined' ? window.innerWidth : 0,
+      height: typeof window !== 'undefined' ? window.innerHeight : 0,
     }
   }
 
