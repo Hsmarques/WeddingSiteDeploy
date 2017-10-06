@@ -19,7 +19,7 @@ export default class Index extends React.Component {
             simples do campo convidam à realização de um evento de sonho.
           </p>
           <p style={{ marginLeft: '10px' }}>
-            <a style={{ color: 'grey' }} href={`www.quintadacouceira.com`}>
+            <a style={{ color: 'grey' }} href={`http://www.quintadacouceira.com`}>
               www.quintadacouceira.com
             </a>
           </p>
