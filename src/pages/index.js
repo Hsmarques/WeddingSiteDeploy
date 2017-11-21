@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
+import Img from 'gatsby-image'
 
 import Item from '../components/item'
 
@@ -29,7 +30,7 @@ const info = [
   },
 ]
 
-export default class Index extends React.Component {
+class Index extends React.Component {
   render() {
     return (
       <div
@@ -45,6 +46,7 @@ export default class Index extends React.Component {
           page={`igreja`}
           modalText={`Cerimónia`}
           image={'capela-sao-miguel'}
+          img={this.props.data.capelaSaoMiguel.resolutions}
         />
         <div
           style={{ borderBottom: '1px solid lightgrey', marginBottom: '15px' }}
@@ -54,6 +56,7 @@ export default class Index extends React.Component {
           page={`quinta`}
           modalText={`Quinta`}
           image={'quinta'}
+          img={this.props.data.quinta.resolutions}
         />
         <div
           style={{ borderBottom: '1px solid lightgrey', marginBottom: '15px' }}
@@ -63,8 +66,31 @@ export default class Index extends React.Component {
           page={false}
           modalText={`Contactos`}
           image={'ele-e-ela'}
+          img={this.props.data.eleEEla.resolutions}
         />
       </div>
     )
   }
 }
+
+export default Index
+
+export const query = graphql`
+  query TracedSVGQuery {
+    capelaSaoMiguel: imageSharp(id: { regex: "/capela-sao-miguel/" }) {
+      resolutions(width: 300) {
+        ...GatsbyImageSharpResolutions_tracedSVG
+      }
+    }
+    eleEEla: imageSharp(id: { regex: "/ele-e-ela/" }) {
+      resolutions(width: 300) {
+        ...GatsbyImageSharpResolutions_tracedSVG
+      }
+    }
+    quinta: imageSharp(id: { regex: "/quinta/" }) {
+      resolutions(width: 300) {
+        ...GatsbyImageSharpResolutions_tracedSVG
+      }
+    }
+  }
+`

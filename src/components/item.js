@@ -2,6 +2,7 @@ import React from 'react'
 import * as PropTypes from 'prop-types'
 import { navigateTo } from 'gatsby-link'
 import Link from 'gatsby-link'
+import Img from 'gatsby-image'
 
 import { rhythm, scale } from '../utils/typography'
 
@@ -14,7 +15,7 @@ const normalCard = (info: {
   link: string,
   address: string,
   time?: string,
-}) =>
+}) => (
   <div
     style={{
       display: 'flex',
@@ -23,33 +24,26 @@ const normalCard = (info: {
     }}
   >
     <a href={`${info.link}`} style={{ color: 'grey' }}>
-      <h3 style={{ color: 'grey' }}>
-        {info.location}
-      </h3>
-      <p style={{ color: 'grey' }}>
-        {info.address}
-      </p>
+      <h3 style={{ color: 'grey' }}>{info.location}</h3>
+      <p style={{ color: 'grey' }}>{info.address}</p>
     </a>
-    {!!info.time &&
-      <p style={{ color: 'grey', paddingTop: '10px' }}>
-        Hora: {info.time}
-      </p>}
+    {!!info.time && (
+      <p style={{ color: 'grey', paddingTop: '10px' }}>Hora: {info.time}</p>
+    )}
   </div>
+)
 
 const contactCard = (info: {
   id: number,
   title: string,
   her: number,
   his: number,
-}) =>
+}) => (
   <div>
-    <p style={{ color: 'grey' }}>
-      Mariana: {info.her}
-    </p>
-    <p style={{ color: 'grey' }}>
-      Hugo: {info.his}
-    </p>
+    <p style={{ color: 'grey' }}>Mariana: {info.her}</p>
+    <p style={{ color: 'grey' }}>Hugo: {info.his}</p>
   </div>
+)
 
 export default class Item extends React.Component {
   constructor() {
@@ -77,38 +71,36 @@ export default class Item extends React.Component {
     const info = this.props.info
     return (
       <div>
-        {!!this.props.page
-          ? <Link
-              to={`${this.props.page}`}
-              style={{ color: 'black' }}
-              activeStyle={{
-                color: 'red',
-              }}
-            >
-              <h1>
-                {info.title}
-              </h1>
-            </Link>
-          : <h1>
-              {info.title}
-            </h1>}
+        {!!this.props.page ? (
+          <Link
+            to={`${this.props.page}`}
+            style={{ color: 'black' }}
+            activeStyle={{
+              color: 'red',
+            }}
+          >
+            <h1>{info.title}</h1>
+          </Link>
+        ) : (
+          <h1>{info.title}</h1>
+        )}
         <div
-          style={{
+          css={{
             display: 'flex',
-            flexDirection: this.state.width > 750 ? `row` : `column`,
+            flexDirection: `column`,
             position: `relative`,
             overflow: `hidden`,
+            '@media (min-width: 500px)': {
+              flexDirection: `row`,
+            },
           }}
         >
-          <img
+          {/* <img
             onTouchStart={() => console.log('I just pressed you')}
-            style={{
-              overflow: `hidden`,
-              width: '100%',
-              height: '40%',
-            }}
+            
             src={require(`../data/${this.props.image}.jpg`)}
-          />
+          /> */}
+          <Img resolutions={this.props.img} />
           <div
             style={{
               flexDirection: 'column',
